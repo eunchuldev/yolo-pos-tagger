@@ -39,6 +39,3 @@ def train(
         batch_size=batch_size,
         epochs=epochs,
     )
-
-
-train("utils/sejon-corpus/t.ndjson", 'test')
