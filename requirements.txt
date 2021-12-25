@@ -1,0 +1,3 @@
+tensorflow>=2
+tensor_annotations>=1
+tensor_annotations_tensorflow_stubs>=1
