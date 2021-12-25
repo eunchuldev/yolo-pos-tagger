@@ -1,5 +1,6 @@
 import tensor_annotations.tensorflow as ttf
 import tensorflow as tf
+from typing import List
 from tensor_annotations import axes
 from tensorflow.keras import Model
 from tensorflow.keras.layers import (Add, BatchNormalization, Conv1D, Input,
@@ -72,7 +73,7 @@ def backbone(
 
 
 def head(
-    x: ttf.Tensor3[Batch, Width, Channels], classes: int, anchors: list[int]
+    x: ttf.Tensor3[Batch, Width, Channels], classes: int, anchors: List[int]
 ) -> ttf.Tensor4[Batch, Width, Anchors, Channels]:
     x = conv(x, 128, kernel_size=1)
     x = conv(x, 256, kernel_size=3)

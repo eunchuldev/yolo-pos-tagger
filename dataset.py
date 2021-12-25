@@ -1,5 +1,5 @@
 import json
-from typing import Iterator, Optional
+from typing import Iterator, Optional, List
 
 import numpy as np
 import tensor_annotations.tensorflow as ttf
@@ -48,7 +48,7 @@ def load_dataset(
         label_vocab = Vocab((tag[0] for line in open(dataset_pattern, "r") for tag in json.loads(line)[1]))
     print('text vocab size:', len(text_vocab))
     print('label vocab size:', len(label_vocab))
-    def parse_line(batches: Iterator[str], max_text_len: int, anchors: list[int]) -> (ttf.Tensor3[Batch, Width, Channels], ttf.Tensor4[Batch, Width, Anchors, Channels]):
+    def parse_line(batches: Iterator[str], max_text_len: int, anchors: List[int]) -> (ttf.Tensor3[Batch, Width, Channels], ttf.Tensor4[Batch, Width, Anchors, Channels]):
         uniform_distribution = np.full(len(label_vocab), 1.0 / len(label_vocab))
         deta = 0.01
         batches = batches.numpy()
